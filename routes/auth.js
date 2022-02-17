@@ -6,11 +6,12 @@ const config = require("config");
 const User = require("../models/User");
 const { check, validationResult } = require("express-validator");
 const res = require("express/lib/response");
+const auth = require("../middleware/auth");
 
 // @route GET api/auth
 // @desc Get logged in user
 // @access Private
-router.get("/", (req, res) => {
+router.get("/", auth, (req, res) => {
   res.send("Get logged in user");
 });
 
