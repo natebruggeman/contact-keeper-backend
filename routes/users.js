@@ -44,13 +44,10 @@ router.post(
 
       //creating salt so we can hash the password
       const salt = await bcrypt.genSalt(10);
-
       //hashing the password
       user.password = await bcrypt.hash(password, salt);
-
       //saving the name, email, and hashed password to the db
       await user.save();
-
       // creating payload, all we need is id because we can get the rest of info with just id
       const payload = {
         user: {
